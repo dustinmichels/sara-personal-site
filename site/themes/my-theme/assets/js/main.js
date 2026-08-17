@@ -195,16 +195,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Group reef showcase images so they can be scrolled
+  const reefShowcase = document.querySelector('.reef-showcase');
+  if (reefShowcase) {
+    const reefImgs = Array.from(reefShowcase.querySelectorAll('img'));
+    reefImgs.forEach((img, i) => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => openModal(reefImgs, i));
+    });
+  }
+
   // Images outside a gallery open solo (no arrows)
-  document.querySelectorAll('img:not(.modal-content):not(.image-gallery img)').forEach((img) => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', () => openModal([img], 0));
-  });
+  document
+    .querySelectorAll(
+      'img:not(.modal-content):not(.image-gallery img):not(.reef-showcase img):not(.pub-icon):not(.no-modal)',
+    )
+    .forEach((img) => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => openModal([img], 0));
+    });
 
   // Scroll depth gauge logic
   const depthGauge = document.querySelector('.scroll-depth-gauge');
   const gaugeDiver = document.querySelector('.gauge-diver');
-  const depthLabel = document.querySelector('.gauge-depth-label');
   const gaugeProgress = document.querySelector('.gauge-progress');
 
   if (depthGauge && gaugeDiver) {
@@ -221,13 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
       gaugeDiver.style.top = `${scrollPercent * 100}%`;
       if (gaugeProgress) {
         gaugeProgress.style.height = `${scrollPercent * 100}%`;
-      }
-
-      // Calculate depth (0m to 30m)
-      const maxDepth = 30;
-      const currentDepth = Math.round(scrollPercent * maxDepth);
-      if (depthLabel) {
-        depthLabel.textContent = `${currentDepth}m`;
       }
     };
 

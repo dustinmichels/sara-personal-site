@@ -34,7 +34,7 @@ mise install
 To run the development server, run:
 
 ```sh
-mise run dev
+mise dev
 
 # or,
 cd site && hugo server -D

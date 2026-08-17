@@ -545,6 +545,25 @@ body.page-cv .page-content p strong {
   margin-top: 2rem;
 }
 
+body.page-cv .page-content li strong,
+body.page-cv .page-content li p strong {
+  display: inline;
+  font-size: inherit;
+  margin-top: 0;
+  color: inherit;
+}
+
+body.page-cv .page-content a {
+  color: var(--accent-blue);
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+  transition: color 0.2s ease;
+}
+
+body.page-cv .page-content a:hover {
+  color: var(--accent);
+}
+
 body.page-cv .page-content p em {
   color: var(--text-secondary);
 }
@@ -768,19 +787,6 @@ body.page-cv .page-content li::before {
   100% {
     transform: rotate(4deg);
   }
-}
-
-.gauge-depth-label {
-  margin-top: 4px;
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  background: var(--bg-sand);
-  padding: 1px 4px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  white-space: nowrap;
 }
 
 .gauge-marks {
@@ -1194,11 +1200,35 @@ body.page-cv .page-content li::before {
   gap: 0.5rem;
   margin-top: auto;
 }
-
 .pub-link:hover {
   color: var(--bg-deep);
 }
 
+.pub-header {
+  margin-bottom: 2rem;
+}
+
+.pub-details {
+  flex: 1;
+}
+
+.pub-icon {
+  display: inline-block;
+  width: 1.7em;
+  height: 1.7em;
+  margin-left: 0.4em;
+  vertical-align: -0.25em;
+  object-fit: contain;
+  opacity: 0.65;
+  mix-blend-mode: multiply;
+  transform: rotate(10deg);
+  transition: all 0.3s ease;
+}
+
+.pub-card:hover .pub-icon {
+  opacity: 0.95;
+  transform: scale(1.08) rotate(12deg);
+}
 /* ============================================================
    DIVE LOG & FIELDWORK NOTEBOOK
    ============================================================ */

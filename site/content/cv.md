@@ -12,7 +12,7 @@ website: [www.saraswaminathan.com](http://www.saraswaminathan.com)</br>
 
 **PhD** – Environmental Engineering Sciences, University of Florida  
 2019 - 2024  
-Dissertation: *Potential for Coral Reef Community Resilience in the Anthropocene*  
+Dissertation: _Potential for Coral Reef Community Resilience in the Anthropocene_  
 Faculty advisor: Andrew Altieri  
 GPA: 4.00/4.00
 
@@ -56,23 +56,23 @@ Advisors: Art Gleason, Brooke Gintert
 
 {{< marquee >}}PUBLICATIONS{{< /marquee >}}
 
-- **Swaminathan SD**, Lafferty KD, Knight NS, and Altieri AH (2024). Stony coral tissue loss disease indirectly alters reef communities. *Science Advances, 10(18).* [https://doi.org/10.1126/sciadv.adk6808](https://doi.org/10.1126/sciadv.adk6808)
+- **Swaminathan SD**, Lafferty KD, Knight NS, and Altieri AH (2024). Stony coral tissue loss disease indirectly alters reef communities. _Science Advances, 10(18)._ [https://doi.org/10.1126/sciadv.adk6808](https://doi.org/10.1126/sciadv.adk6808)
 
-- **Swaminathan SD**, Meyer JL, Johnson MD, Paul VJ, Bartels E and Altieri AH (2024) Divergent responses of the coral holobiont to deoxygenation and prior environmental stress. *Frontiers in Marine Science 10:1301474.* [https://doi.org/10.3389/fmars.2023.1301474](https://doi.org/10.3389/fmars.2023.1301474)
+- **Swaminathan SD**, Meyer JL, Johnson MD, Paul VJ, Bartels E and Altieri AH (2024) Divergent responses of the coral holobiont to deoxygenation and prior environmental stress. _Frontiers in Marine Science 10:1301474._ [https://doi.org/10.3389/fmars.2023.1301474](https://doi.org/10.3389/fmars.2023.1301474)
 
-- Johnson MD, **Swaminathan SD**, Nixon EN, Paul VJ, Altieri AH (2021) Differential susceptibility of reef-building corals to deoxygenation reveals remarkable hypoxia tolerance. *Scientific Reports 11:23168.* [https://doi.org/10.1038/s41598-021-01078-9](https://doi.org/10.1038/s41598-021-01078-9)
+- Johnson MD, **Swaminathan SD**, Nixon EN, Paul VJ, Altieri AH (2021) Differential susceptibility of reef-building corals to deoxygenation reveals remarkable hypoxia tolerance. _Scientific Reports 11:23168._ [https://doi.org/10.1038/s41598-021-01078-9](https://doi.org/10.1038/s41598-021-01078-9)
 
-- Altieri AH, Johnson MD, **Swaminathan SD**, Nelson HR, Gedan KB (2020) Resilience of Tropical Ecosystems to Ocean Deoxygenation. *Trends in Ecology & Evolution 36(3):227-238.* [10.1016/j.tree.2020.11.003](https://pubmed.ncbi.nlm.nih.gov/33419595/)
+- Altieri AH, Johnson MD, **Swaminathan SD**, Nelson HR, Gedan KB (2020) Resilience of Tropical Ecosystems to Ocean Deoxygenation. _Trends in Ecology & Evolution 36(3):227-238._ [10.1016/j.tree.2020.11.003](https://pubmed.ncbi.nlm.nih.gov/33419595/)
 
-- **Swaminathan SD**, Craig Z, Didderen K, Lengkeek W, Merck D, Muller E, Van Der Heide T, Altieri AH. Predator exclusion improves coral reef restoration success in a marine protected area. *Restoration Ecology — IN REVIEW*
+- **Swaminathan SD**, Craig Z, Didderen K, Lengkeek W, Merck D, Muller E, Van Der Heide T, Altieri AH. Predator exclusion improves coral reef restoration success in a marine protected area. _Restoration Ecology — IN REVIEW_
 
 {{< marquee >}}FUNDING, HONORS & AWARDS{{< /marquee >}}
 
-- 2022 Tropical Conservation and Development Travel Award, University of Florida Center for Latin American Studies ($500)  
-- 2020 Tropical Conservation and Development Field Research Award, University of Florida Center for Latin American Studies ($2500)  
-- 2020 Sally and William Glick Graduate Research Endowment, University of Florida Department of Environmental Engineering Sciences ($1500)  
-- 2019 National Science Foundation Graduate Research Fellowship Program (NSF GRFP) ($144,000)  
-- 2019 University of Florida Graduate Student Preeminence Award, University of Florida Graduate School ($36,000)  
+- 2022 Tropical Conservation and Development Travel Award, University of Florida Center for Latin American Studies ($500)
+- 2020 Tropical Conservation and Development Field Research Award, University of Florida Center for Latin American Studies ($2500)
+- 2020 Sally and William Glick Graduate Research Endowment, University of Florida Department of Environmental Engineering Sciences ($1500)
+- 2019 National Science Foundation Graduate Research Fellowship Program (NSF GRFP) ($144,000)
+- 2019 University of Florida Graduate Student Preeminence Award, University of Florida Graduate School ($36,000)
 - 2018 Bahamas Marine EcoCentre Research Fellowship ($10,000)
 
 {{< marquee >}}OUTREACH & MENTORING{{< /marquee >}}
@@ -84,8 +84,8 @@ Advisors: Art Gleason, Brooke Gintert
 
 **Past and present research mentees:**
 
-- Alexandra Grant (2023 – present) – Current Masters student, Department of Environmental Engineering Sciences, University of Florida. Thesis title: *Key Drivers of Growth and Survival for Coral Outplanting Success in the Florida Keys*
-- Julie Fernandez (2021 – present) – Current undergraduate research assistant, Department of Environmental Engineering Sciences, University of Florida. Thesis title: *Responses of the Coral Microbiome to Warming and Deoxygenation*
+- Alexandra Grant (2023 – present) – Current Masters student, Department of Environmental Engineering Sciences, University of Florida. Thesis title: _Key Drivers of Growth and Survival for Coral Outplanting Success in the Florida Keys_
+- Julie Fernandez (2021 – present) – Current undergraduate research assistant, Department of Environmental Engineering Sciences, University of Florida. Thesis title: _Responses of the Coral Microbiome to Warming and Deoxygenation_
 - Hailey Vaughan (2021 – 2022) – Former research assistant, Department of Environmental Engineering Sciences, University of Florida
 - Garret O'Donnell (2021) – Current Knauss Fellow at National Oceanographic and Atmospheric Association
 - Will Ferrell, Mikey Orense, Claire Hiaasen, Hunter Kaminski (2019 – 2020) – Former undergraduates at the University of Florida, Department of Environmental Engineering Sciences
@@ -103,13 +103,13 @@ Advisors: Art Gleason, Brooke Gintert
 - "Stony Coral Tissue Loss Disease alters coral reef communities" Oral presentation; Ecological Society of America. 10 Aug 2023, Portland, Oregon.
 - "Stony Coral Tissue Loss Disease threatens reef fish by altering benthic communities" Oral presentation; North Florida Marine Science Symposium. 03 Mar 2023, Marineland, Florida. **Award for Best Graduate Student Oral Presentation.**
 - "Stony Coral Tissue Loss Disease threatens reef fish by altering benthic communities" Oral presentation, Western Society of Naturalists annual meeting. 13 Nov 2022, Oxnard, California.
-- "Resilience of the *Acropora cervicornis* microbiome to hypoxia and host physiological stress" Oral presentation, International Coral Reef Symposium. 06 July 2022, Bremen, Germany.
+- "Resilience of the _Acropora cervicornis_ microbiome to hypoxia and host physiological stress" Oral presentation, International Coral Reef Symposium. 06 July 2022, Bremen, Germany.
 - "Responses of benthic and reef fish assemblages to Stony Coral Tissue Loss Disease" Oral presentation, Benthic Ecology Meeting. 31 March 2022, Portsmouth, NH.
 - "Resilience of the coral microbiome to hypoxia and host physiological stress" Oral presentation, Coastal Hypoxia Research Program Advisory Committee Meeting. 26 April 2021, Gainesville, FL.
-- "Light exposure mediates susceptibility of juvenile *P. astreoides* to oxygen depletion" Oral presentation, Coastal Hypoxia Research Program Advisory Committee Meeting. 10 April 2020, Gainesville, FL.
-- "Light exposure mediates susceptibility of juvenile *P. astreoides* to oxygen depletion" Poster presentation, North Florida Marine Science Symposium. 23 January 2020, Marineland, FL.
-- "Site and genotype influence success of *A. cervicornis* outplants in the Florida Keys" Oral presentation, Coastal Ecosystem Dynamics Seminar. 19 November 2019. Gainesville, FL.
-- "Assessing the relationship between *Spirobranchus giganteus* presence and health of coral hosts." Oral presentation delivered to academic panel and local community. 05 December 2016. Center for Marine Resource Studies, South Caicos, TCI.
+- "Light exposure mediates susceptibility of juvenile _P. astreoides_ to oxygen depletion" Oral presentation, Coastal Hypoxia Research Program Advisory Committee Meeting. 10 April 2020, Gainesville, FL.
+- "Light exposure mediates susceptibility of juvenile _P. astreoides_ to oxygen depletion" Poster presentation, North Florida Marine Science Symposium. 23 January 2020, Marineland, FL.
+- "Site and genotype influence success of _A. cervicornis_ outplants in the Florida Keys" Oral presentation, Coastal Ecosystem Dynamics Seminar. 19 November 2019. Gainesville, FL.
+- "Assessing the relationship between _Spirobranchus giganteus_ presence and health of coral hosts." Oral presentation delivered to academic panel and local community. 05 December 2016. Center for Marine Resource Studies, South Caicos, TCI.
 
 {{< marquee >}}TECHNICAL SKILLS{{< /marquee >}}
 
