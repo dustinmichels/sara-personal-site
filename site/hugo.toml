@@ -1,5 +1,5 @@
 baseURL = 'https://saraswaminathan.com/'
-languageCode = 'en-us'
+locale = 'en-US'
 title = 'Sara Swaminathan, PhD'
 theme = "my-theme"
 canonifyURLs = true

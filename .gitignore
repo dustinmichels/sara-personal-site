@@ -71,3 +71,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Package manager & tool manager directories
+node_modules/
+.mise/

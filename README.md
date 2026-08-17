@@ -33,3 +33,17 @@ Production
 hugo
 ```
 
+### Formatting
+
+This project uses [mise](https://mise.jdx.dev/) to manage and run formatting tools:
+
+- **`gotmplfmt`**: Formats Go/Hugo template files in `site/themes/my-theme/layouts/`.
+- **`oxfmt`**: Formats JS, CSS, and configuration files (like `site/hugo.toml`).
+
+To format all layout templates and assets in one command:
+
+```sh
+mise run fmt
+```
+
+`oxfmt` configuration and exclusion rules are defined in `.oxfmtrc.json`.

@@ -1,0 +1,8 @@
+{
+  "singleQuote": true,
+  "ignorePatterns": [
+    "site/themes/my-theme/layouts/**/*.html",
+    "site/content/**/*.md",
+    "**/.github/**/*.yml"
+  ]
+}

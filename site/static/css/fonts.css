@@ -9,9 +9,10 @@
 
 @font-face {
   font-display: block;
-  font-family: "Diatype";
-  src: url("https://type.cargo.site/files/CargoDiatype-Regular.woff2") format("woff2"),
-    url("https://type.cargo.site/files/CargoDiatype-Regular.woff") format("woff");
+  font-family: 'Diatype';
+  src:
+    url('https://type.cargo.site/files/CargoDiatype-Regular.woff2') format('woff2'),
+    url('https://type.cargo.site/files/CargoDiatype-Regular.woff') format('woff');
   font-style: normal;
   font-weight: 400;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -19,9 +20,10 @@
 
 @font-face {
   font-display: block;
-  font-family: "Diatype";
-  src: url("https://type.cargo.site/files/CargoDiatype-RegularItalic.woff2") format("woff2"),
-    url("https://type.cargo.site/files/CargoDiatype-RegularItalic.woff") format("woff");
+  font-family: 'Diatype';
+  src:
+    url('https://type.cargo.site/files/CargoDiatype-RegularItalic.woff2') format('woff2'),
+    url('https://type.cargo.site/files/CargoDiatype-RegularItalic.woff') format('woff');
   font-style: italic;
   font-weight: 400;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -29,9 +31,10 @@
 
 @font-face {
   font-display: block;
-  font-family: "Diatype";
-  src: url("https://type.cargo.site/files/CargoDiatype-Medium.woff2") format("woff2"),
-    url("https://type.cargo.site/files/CargoDiatype-Medium.woff") format("woff");
+  font-family: 'Diatype';
+  src:
+    url('https://type.cargo.site/files/CargoDiatype-Medium.woff2') format('woff2'),
+    url('https://type.cargo.site/files/CargoDiatype-Medium.woff') format('woff');
   font-style: normal;
   font-weight: 500;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -39,9 +42,10 @@
 
 @font-face {
   font-display: block;
-  font-family: "Diatype";
-  src: url("https://type.cargo.site/files/CargoDiatype-MediumItalic.woff2") format("woff2"),
-    url("https://type.cargo.site/files/CargoDiatype-MediumItalic.woff") format("woff");
+  font-family: 'Diatype';
+  src:
+    url('https://type.cargo.site/files/CargoDiatype-MediumItalic.woff2') format('woff2'),
+    url('https://type.cargo.site/files/CargoDiatype-MediumItalic.woff') format('woff');
   font-style: italic;
   font-weight: 500;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -49,9 +53,10 @@
 
 @font-face {
   font-display: block;
-  font-family: "Diatype";
-  src: url("https://type.cargo.site/files/CargoDiatype-Bold.woff2") format("woff2"),
-    url("https://type.cargo.site/files/CargoDiatype-Bold.woff") format("woff");
+  font-family: 'Diatype';
+  src:
+    url('https://type.cargo.site/files/CargoDiatype-Bold.woff2') format('woff2'),
+    url('https://type.cargo.site/files/CargoDiatype-Bold.woff') format('woff');
   font-style: normal;
   font-weight: 700;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -59,9 +64,10 @@
 
 @font-face {
   font-display: block;
-  font-family: "Diatype";
-  src: url("https://type.cargo.site/files/CargoDiatype-BoldItalic.woff2") format("woff2"),
-    url("https://type.cargo.site/files/CargoDiatype-BoldItalic.woff") format("woff");
+  font-family: 'Diatype';
+  src:
+    url('https://type.cargo.site/files/CargoDiatype-BoldItalic.woff2') format('woff2'),
+    url('https://type.cargo.site/files/CargoDiatype-BoldItalic.woff') format('woff');
   font-style: italic;
   font-weight: 700;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -69,8 +75,8 @@
 
 @font-face {
   font-display: block;
-  font-family: "Neue Haas Grotesk";
-  src: url("https://type.cargo.site/files/NeueHaasGroteskText-Regular.woff") format("woff");
+  font-family: 'Neue Haas Grotesk';
+  src: url('https://type.cargo.site/files/NeueHaasGroteskText-Regular.woff') format('woff');
   font-style: normal;
   font-weight: normal;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -78,8 +84,8 @@
 
 @font-face {
   font-display: block;
-  font-family: "Neue Haas Grotesk";
-  src: url("https://type.cargo.site/files/NeueHaasGroteskText-Italic.woff") format("woff");
+  font-family: 'Neue Haas Grotesk';
+  src: url('https://type.cargo.site/files/NeueHaasGroteskText-Italic.woff') format('woff');
   font-style: italic;
   font-weight: normal;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -87,8 +93,8 @@
 
 @font-face {
   font-display: block;
-  font-family: "Neue Haas Grotesk";
-  src: url("https://type.cargo.site/files/NeueHaasGroteskText-Medium.woff") format("woff");
+  font-family: 'Neue Haas Grotesk';
+  src: url('https://type.cargo.site/files/NeueHaasGroteskText-Medium.woff') format('woff');
   font-style: normal;
   font-weight: 500;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -96,8 +102,8 @@
 
 @font-face {
   font-display: block;
-  font-family: "Neue Haas Grotesk";
-  src: url("https://type.cargo.site/files/NeueHaasGroteskText-MediumItalic.woff") format("woff");
+  font-family: 'Neue Haas Grotesk';
+  src: url('https://type.cargo.site/files/NeueHaasGroteskText-MediumItalic.woff') format('woff');
   font-style: italic;
   font-weight: 500;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -105,8 +111,8 @@
 
 @font-face {
   font-display: block;
-  font-family: "Neue Haas Grotesk";
-  src: url("https://type.cargo.site/files/NeueHaasGroteskText-Bold.woff") format("woff");
+  font-family: 'Neue Haas Grotesk';
+  src: url('https://type.cargo.site/files/NeueHaasGroteskText-Bold.woff') format('woff');
   font-style: normal;
   font-weight: bold;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -114,9 +120,11 @@
 
 @font-face {
   font-display: block;
-  font-family: "Monument Grotesk Mono Variable";
-  src: url("https://type.cargo.site/files/CargoMonumentGroteskPlusVariable.woff2") format("woff2-variations"),
-    url("https://type.cargo.site/files/CargoMonumentGroteskPlusVariable.woff") format("woff");
+  font-family: 'Monument Grotesk Mono Variable';
+  src:
+    url('https://type.cargo.site/files/CargoMonumentGroteskPlusVariable.woff2')
+      format('woff2-variations'),
+    url('https://type.cargo.site/files/CargoMonumentGroteskPlusVariable.woff') format('woff');
   font-style: normal;
   font-weight: 200 900;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -124,9 +132,10 @@
 
 @font-face {
   font-display: block;
-  font-family: "Monument Grotesk Mono";
-  src: url("https://type.cargo.site/files/CargoMonumentGroteskMono-Regular.woff2") format("woff2"),
-    url("https://type.cargo.site/files/CargoMonumentGroteskMono-Regular.woff") format("woff");
+  font-family: 'Monument Grotesk Mono';
+  src:
+    url('https://type.cargo.site/files/CargoMonumentGroteskMono-Regular.woff2') format('woff2'),
+    url('https://type.cargo.site/files/CargoMonumentGroteskMono-Regular.woff') format('woff');
   font-style: normal;
   font-weight: 400;
   unicode-range: U+0000-DFFF, U+F900-FFFD;
@@ -134,9 +143,10 @@
 
 @font-face {
   font-display: block;
-  font-family: "Monument Grotesk Mono";
-  src: url("https://type.cargo.site/files/CargoMonumentGroteskMono-Medium.woff2") format("woff2"),
-    url("https://type.cargo.site/files/CargoMonumentGroteskMono-Medium.woff") format("woff");
+  font-family: 'Monument Grotesk Mono';
+  src:
+    url('https://type.cargo.site/files/CargoMonumentGroteskMono-Medium.woff2') format('woff2'),
+    url('https://type.cargo.site/files/CargoMonumentGroteskMono-Medium.woff') format('woff');
   font-style: normal;
   font-weight: 500;
   unicode-range: U+0000-DFFF, U+F900-FFFD;

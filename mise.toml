@@ -1,0 +1,7 @@
+[tools]
+hugo = "0.165.0"
+"go:github.com/gohugoio/gotmplfmt" = "latest"
+"npm:oxfmt" = "latest"
+[tasks.fmt]
+description = "Format Go templates with gotmplfmt, and JS/CSS/TOML with oxfmt"
+run = ["gotmplfmt -w site/themes/my-theme/layouts", "oxfmt --write ."]

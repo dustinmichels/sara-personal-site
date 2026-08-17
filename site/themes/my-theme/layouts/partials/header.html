@@ -1,12 +1,12 @@
 <header class="site-header">
-  <div class="section-header-name">
-    <h1><a href="{{ "" | absURL }}" rel="history">{{ site.Title }}</a></h1>
-  </div>
-  <nav class="section-header-nav">
-    <div class="nav-links">
-      {{- range site.Menus.main }}
-      <a href="{{ .URL }}" rel="history"{{ if $.IsMenuCurrent "main" . }} class="active"{{ end }}>{{ .Name }}</a>
-      {{- end }}
-    </div>
-  </nav>
+	<div class="section-header-name">
+		<h1><a href="{{ "" | absURL }}" rel="history">{{ site.Title }}</a></h1>
+	</div>
+	<nav class="section-header-nav">
+		<div class="nav-links">
+			{{- range site.Menus.main }}
+				<a href="{{ .URL }}" rel="history"{{ if $.IsMenuCurrent "main" . }} class="active"{{ end }}>{{ .Name }}</a>
+			{{- end }}
+		</div>
+	</nav>
 </header>

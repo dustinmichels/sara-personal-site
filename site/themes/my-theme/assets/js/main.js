@@ -6,10 +6,10 @@ if (document.body.classList.contains('is-home')) {
     const b = document.createElement('div');
     b.className = 'bubble';
     const size = Math.random() * 48 + 8;
-    b.style.width  = size + 'px';
+    b.style.width = size + 'px';
     b.style.height = size + 'px';
-    b.style.left   = (Math.random() * 98) + 'vw';
-    b.style.animationDuration = (Math.random() * 8 + 6) + 's';
+    b.style.left = Math.random() * 98 + 'vw';
+    b.style.animationDuration = Math.random() * 8 + 6 + 's';
     document.body.appendChild(b);
     b.addEventListener('animationend', () => b.remove(), { once: true });
     setTimeout(spawnBubble, Math.random() * 1200 + 400);
@@ -90,29 +90,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('keydown', (e) => {
     if (!overlay.classList.contains('active')) return;
-    if (e.key === 'Escape')     closeModal();
-    if (e.key === 'ArrowLeft')  showImage(currentIndex - 1);
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
     if (e.key === 'ArrowRight') showImage(currentIndex + 1);
   });
 
   // Attach click events — group images by their gallery container
   // Wrap gallery images with caption overlays & attach click events
-  document.querySelectorAll('.image-gallery').forEach(gallery => {
+  document.querySelectorAll('.image-gallery').forEach((gallery) => {
     const imgs = Array.from(gallery.querySelectorAll('img'));
-    
+
     imgs.forEach((img, i) => {
       // Create wrapper
       const wrapper = document.createElement('div');
       wrapper.className = 'gallery-item-wrapper';
       img.parentNode.insertBefore(wrapper, img);
       wrapper.appendChild(img);
-      
+
       // Create overlay
       const overlay = document.createElement('div');
       overlay.className = 'gallery-item-overlay';
       overlay.innerHTML = `<span class="overlay-title">${img.alt || 'Scientific Illustration'}</span>`;
       wrapper.appendChild(overlay);
-      
+
       img.style.cursor = 'pointer';
       // Let either the image or the overlay trigger the modal open!
       img.addEventListener('click', () => openModal(imgs, i));
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Reveal contact info buttons
-  document.querySelectorAll('.reveal-btn').forEach(btn => {
+  document.querySelectorAll('.reveal-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const value = atob(btn.dataset.encoded);
       const display = btn.nextElementSibling;
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Images outside a gallery open solo (no arrows)
-  document.querySelectorAll('img:not(.modal-content):not(.image-gallery img)').forEach(img => {
+  document.querySelectorAll('img:not(.modal-content):not(.image-gallery img)').forEach((img) => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', () => openModal([img], 0));
   });
@@ -173,13 +173,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       depthGauge.style.opacity = '1';
       const scrollPercent = Math.min(Math.max(window.scrollY / scrollHeight, 0), 1);
-      
+
       // Position diver
       gaugeDiver.style.top = `${scrollPercent * 100}%`;
       if (gaugeProgress) {
         gaugeProgress.style.height = `${scrollPercent * 100}%`;
       }
-      
+
       // Calculate depth (0m to 30m)
       const maxDepth = 30;
       const currentDepth = Math.round(scrollPercent * maxDepth);
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         depthLabel.textContent = `${currentDepth}m`;
       }
     };
-    
+
     window.addEventListener('scroll', updateDepth, { passive: true });
     window.addEventListener('resize', updateDepth, { passive: true });
     updateDepth();
