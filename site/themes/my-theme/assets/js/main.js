@@ -50,19 +50,59 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalImg = document.createElement('img');
   modalImg.className = 'modal-content';
 
+  const modalCaption = document.createElement('div');
+  modalCaption.className = 'modal-caption';
+
   overlay.appendChild(closeBtn);
   overlay.appendChild(prevBtn);
   overlay.appendChild(modalImg);
+  overlay.appendChild(modalCaption);
   overlay.appendChild(nextBtn);
   document.body.appendChild(overlay);
+
+  // Prevent clicks on caption from closing modal
+  modalCaption.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
 
   // Track gallery images and current index
   let galleryImgs = [];
   let currentIndex = 0;
 
+  const getCaptionHTML = (img) => {
+    if (!img) return '';
+
+    // 1. Try to find reef organism label (e.g., interactive reef showcase)
+    const reefLabel = img.closest('.reef-organism')?.querySelector('.organism-label');
+    if (reefLabel) {
+      return reefLabel.innerHTML;
+    }
+
+    // 2. Parse alt text if it has a pattern like "Common Name (Scientific Name)"
+    const alt = img.getAttribute('alt') || '';
+    if (!alt) return '';
+
+    const match = alt.match(/^(.*?)\s*\((.*?)\)$/);
+    if (match) {
+      const commonName = match[1].trim();
+      const scientificName = match[2].trim();
+      return `<span class="organism-name">${commonName}</span><span class="organism-scientific">${scientificName}</span>`;
+    }
+
+    // Default to plain alt text as name
+    return `<span class="organism-name">${alt}</span>`;
+  };
+
   const showImage = (index) => {
     currentIndex = (index + galleryImgs.length) % galleryImgs.length;
-    modalImg.src = galleryImgs[currentIndex].src;
+    const currentImg = galleryImgs[currentIndex];
+    modalImg.src = currentImg.src;
+
+    // Update caption
+    const captionHTML = getCaptionHTML(currentImg);
+    modalCaption.innerHTML = captionHTML;
+    modalCaption.style.display = captionHTML ? 'block' : 'none';
+
     prevBtn.style.visibility = galleryImgs.length > 1 ? 'visible' : 'hidden';
     nextBtn.style.visibility = galleryImgs.length > 1 ? 'visible' : 'hidden';
   };

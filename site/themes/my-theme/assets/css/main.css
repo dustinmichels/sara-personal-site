@@ -301,14 +301,37 @@ body.is-home .home-hero img {
 
 .modal-overlay.active {
   display: flex !important;
+  flex-direction: column;
 }
 
 .modal-content {
   max-width: 90%;
-  max-height: 90%;
+  max-height: 75vh;
   object-fit: contain;
   cursor: default;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-caption {
+  margin-top: 1.5rem;
+  text-align: center;
+  cursor: default;
+  padding: 0 1rem;
+}
+
+.modal-caption .organism-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+}
+
+.modal-caption .organism-scientific {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  display: block;
 }
 
 .modal-close {

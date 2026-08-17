@@ -10,3 +10,8 @@ run = ["gotmplfmt -w site/themes/my-theme/layouts", "oxfmt --write ."]
 description = "Run Hugo development server"
 dir = "site"
 run = "hugo server -D"
+
+[tasks.build]
+description = "Build the Hugo site for production"
+dir = "site"
+run = "hugo --gc --minify"

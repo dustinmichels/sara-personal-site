@@ -2,7 +2,7 @@
 
 Static site for Sara built with [Hugo](https://gohugo.io/).
 
-## Content
+## Editing content
 
 Generally, edit content in:
 
@@ -19,31 +19,35 @@ Don't worry about auto-generated content:
 - `site/public/` (the generated site, which is what gets deployed)
 - `site/resources/` (the generated resources, like resized images)
 
-## Usage
+## Development
 
-Development
+To install dev dependencies (hugo, gotmplfmt, and oxfmt), run, first:
 
-```sh
-hugo server -D
-```
+> Install [mise](https://mise.jdx.dev/installing-mise.html)
 
-Production
+then run:
 
 ```sh
-hugo
+mise install
 ```
 
-### Formatting
+To run the development server, run:
 
-This project uses [mise](https://mise.jdx.dev/) to manage and run formatting tools:
+```sh
+mise run dev
 
-- **`gotmplfmt`**: Formats Go/Hugo template files in `site/themes/my-theme/layouts/`.
-- **`oxfmt`**: Formats JS, CSS, and configuration files (like `site/hugo.toml`).
+# or,
+cd site && hugo server -D
+```
 
-To format all layout templates and assets in one command:
+To format code with gotmplfmt and oxfmt, run:
 
 ```sh
 mise run fmt
 ```
 
-`oxfmt` configuration and exclusion rules are defined in `.oxfmtrc.json`.
+To build the site for production:
+
+```sh
+mise run build
+```
