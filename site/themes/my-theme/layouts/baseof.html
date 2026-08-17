@@ -1,17 +1,40 @@
-<!DOCTYPE html>
-<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
-<head>
-  {{ partial "head.html" . }}
-</head>
-<body class="{{ if .IsHome }}is-home{{ else }}page-{{ .Title | urlize }}{{ end }}">
-  <div class="site-wrapper">
-    {{ partial "header.html" . }}
-    <main class="section-main-content">
-      <div class="page-content">
-        {{ block "main" . }}{{ end }}
+<!doctype html>
+<html
+  lang="{{ site.Language.LanguageCode }}"
+  dir="{{ or site.Language.LanguageDirection `ltr` }}"
+>
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body
+    class="{{ if .IsHome }}is-home{{ else }}page-{{ .Title | urlize }}{{ end }}"
+  >
+    <div class="site-wrapper">
+      {{ partial "header.html" . }}
+      <main class="section-main-content">
+        <div class="page-content">{{ block "main" . }}{{ end }}</div>
+      </main>
+    </div>
+    <!-- Scroll Depth Gauge -->
+    <div class="scroll-depth-gauge" aria-hidden="true">
+      <div class="gauge-line">
+        <div class="gauge-progress"></div>
+        <div class="gauge-diver">
+          <svg class="diver-svg" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm3 7h-6a2 2 0 0 0-2 2v5a1 1 0 0 0 2 0v-4h1v8a1 1 0 0 0 2 0v-8h1v8a1 1 0 0 0 2 0v-8h1v4a1 1 0 0 0 2 0v-5a2 2 0 0 0-2-2z"
+            />
+          </svg>
+          <span class="gauge-depth-label">0m</span>
+        </div>
       </div>
-    </main>
-  </div>
-  {{ partial "head/js.html" . }}
-</body>
+      <div class="gauge-marks">
+        <div class="gauge-mark" style="top: 0%"><span>0m</span></div>
+        <div class="gauge-mark" style="top: 33%"><span>10m</span></div>
+        <div class="gauge-mark" style="top: 66%"><span>20m</span></div>
+        <div class="gauge-mark" style="top: 100%"><span>30m</span></div>
+      </div>
+    </div>
+    {{ partial "head/js.html" . }}
+  </body>
 </html>

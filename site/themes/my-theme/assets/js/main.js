@@ -96,11 +96,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Attach click events — group images by their gallery container
+  // Wrap gallery images with caption overlays & attach click events
   document.querySelectorAll('.image-gallery').forEach(gallery => {
     const imgs = Array.from(gallery.querySelectorAll('img'));
+    
     imgs.forEach((img, i) => {
+      // Create wrapper
+      const wrapper = document.createElement('div');
+      wrapper.className = 'gallery-item-wrapper';
+      img.parentNode.insertBefore(wrapper, img);
+      wrapper.appendChild(img);
+      
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'gallery-item-overlay';
+      overlay.innerHTML = `<span class="overlay-title">${img.alt || 'Scientific Illustration'}</span>`;
+      wrapper.appendChild(overlay);
+      
       img.style.cursor = 'pointer';
+      // Let either the image or the overlay trigger the modal open!
       img.addEventListener('click', () => openModal(imgs, i));
+      overlay.addEventListener('click', () => openModal(imgs, i));
     });
 
     // Initialize Macy.js masonry for this gallery
@@ -109,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
       container: gallery,
       trueOrder: true,
       waitForImages: true,
-      margin: 8,
+      margin: 16,
       columns: 3,
       breakAt: {
         800: 2,
@@ -141,4 +157,39 @@ document.addEventListener('DOMContentLoaded', () => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', () => openModal([img], 0));
   });
+
+  // Scroll depth gauge logic
+  const depthGauge = document.querySelector('.scroll-depth-gauge');
+  const gaugeDiver = document.querySelector('.gauge-diver');
+  const depthLabel = document.querySelector('.gauge-depth-label');
+  const gaugeProgress = document.querySelector('.gauge-progress');
+
+  if (depthGauge && gaugeDiver) {
+    const updateDepth = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight <= 0) {
+        depthGauge.style.opacity = '0';
+        return;
+      }
+      depthGauge.style.opacity = '1';
+      const scrollPercent = Math.min(Math.max(window.scrollY / scrollHeight, 0), 1);
+      
+      // Position diver
+      gaugeDiver.style.top = `${scrollPercent * 100}%`;
+      if (gaugeProgress) {
+        gaugeProgress.style.height = `${scrollPercent * 100}%`;
+      }
+      
+      // Calculate depth (0m to 30m)
+      const maxDepth = 30;
+      const currentDepth = Math.round(scrollPercent * maxDepth);
+      if (depthLabel) {
+        depthLabel.textContent = `${currentDepth}m`;
+      }
+    };
+    
+    window.addEventListener('scroll', updateDepth, { passive: true });
+    window.addEventListener('resize', updateDepth, { passive: true });
+    updateDepth();
+  }
 });
