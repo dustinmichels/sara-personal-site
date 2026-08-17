@@ -5,3 +5,8 @@ hugo = "0.165.0"
 [tasks.fmt]
 description = "Format Go templates with gotmplfmt, and JS/CSS/TOML with oxfmt"
 run = ["gotmplfmt -w site/themes/my-theme/layouts", "oxfmt --write ."]
+
+[tasks.dev]
+description = "Run Hugo development server"
+dir = "site"
+run = "hugo server -D"

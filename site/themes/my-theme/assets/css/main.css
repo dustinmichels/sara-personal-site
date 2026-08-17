@@ -208,20 +208,12 @@ small a {
   border-radius: 4px;
 }
 
-.site-header.scrolled .section-header-name {
-  background: rgba(226, 228, 225, 0.82);
-}
-
 .section-header-nav {
   padding: 1.5rem;
   text-align: right;
   background: transparent;
   transition: background 0.4s ease;
   border-radius: 4px;
-}
-
-.site-header.scrolled .section-header-nav {
-  background: rgba(226, 228, 225, 0.82);
 }
 
 .section-header-nav h1 {
@@ -640,8 +632,8 @@ body.page-cv .page-content li::before {
    BUBBLES (Floating Background)
    ============================================================ */
 .bubble {
-  position: fixed;
-  bottom: -60px;
+  position: absolute;
+  bottom: -35px;
   background: radial-gradient(
     circle at 30% 30%,
     rgba(255, 255, 255, 0.45) 0%,
@@ -654,7 +646,7 @@ body.page-cv .page-content li::before {
     0 2px 10px rgba(0, 77, 122, 0.05);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 5;
   animation-name: bubble-rise;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
@@ -662,26 +654,31 @@ body.page-cv .page-content li::before {
 
 @keyframes bubble-rise {
   0% {
-    transform: translateY(0) translateX(0);
+    bottom: -35px;
+    transform: translateX(0);
     opacity: 0;
   }
   10% {
     opacity: 0.6;
   }
   25% {
-    transform: translateY(-30vh) translateX(15px);
+    bottom: 30%;
+    transform: translateX(10px);
   }
   50% {
-    transform: translateY(-60vh) translateX(-15px);
+    bottom: 60%;
+    transform: translateX(-10px);
   }
   75% {
-    transform: translateY(-90vh) translateX(20px);
+    bottom: 90%;
+    transform: translateX(10px);
   }
   90% {
     opacity: 0.6;
   }
   100% {
-    transform: translateY(-115vh) translateX(-10px);
+    bottom: 110%;
+    transform: translateX(-5px);
     opacity: 0;
   }
 }
@@ -733,19 +730,19 @@ body.page-cv .page-content li::before {
 }
 
 .diver-svg {
-  width: 32px;
-  height: 32px;
+  width: 64px;
+  height: 64px;
   color: var(--accent);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-  animation: diver-swim 2s ease-in-out infinite alternate;
+  animation: diver-swim 1.2s ease-in-out infinite alternate;
 }
 
 @keyframes diver-swim {
   0% {
-    transform: translate(0, 0) rotate(-3deg);
+    transform: rotate(-12deg);
   }
   100% {
-    transform: translate(1px, 2px) rotate(3deg);
+    transform: rotate(12deg);
   }
 }
 
@@ -985,6 +982,7 @@ body.page-cv .page-content li::before {
   overflow: hidden;
   border-radius: 4px;
   aspect-ratio: 4/5;
+  position: relative;
 }
 
 .hero-photo {

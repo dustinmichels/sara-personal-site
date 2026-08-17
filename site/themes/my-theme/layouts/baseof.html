@@ -20,40 +20,20 @@
 			<div class="gauge-line">
 				<div class="gauge-progress"></div>
 				<div class="gauge-diver">
-					<svg class="diver-svg" viewBox="0 0 24 24" fill="currentColor">
-						<!-- Bubbles rising -->
-						<circle cx="14" cy="5" r="0.7" opacity="0.7" />
-						<circle cx="16" cy="8" r="1" opacity="0.8" />
-						<circle cx="15" cy="12" r="0.5" opacity="0.6" />
-
-						<!-- Scuba Tank (on the back, tilted down-right) -->
-						<rect x="7" y="11" width="3" height="7" rx="1.5" transform="rotate(-45 8.5 14.5)" />
-
-						<!-- Torso / Body -->
-						<rect x="9" y="12" width="4" height="9" rx="2" transform="rotate(-45 11 16.5)" />
-
-						<!-- Head -->
-						<circle cx="16" cy="18" r="2" />
-
-						<!-- Mask/Goggles -->
-						<rect x="17" y="16.5" width="2" height="1.5" rx="0.5" transform="rotate(-45 18 17.25)" />
-
-						<!-- Regulator/Snorkel line -->
-						<path d="M 15.5,18.5 Q 16.5,19.5 17.5,18.5" fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" />
-
-						<!-- Arms (reaching forward/down) -->
-						<path d="M 12.5,18 L 14.5,21.5 M 12.5,18 L 15,20.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-
-						<!-- Legs & Fins -->
-						<!-- Leg 1 -->
-						<path d="M 9.5,13.5 L 5.5,9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-						<!-- Fin 1 -->
-						<polygon points="5.5,9.5 3.5,10.5 3,7.5 5,8.5" />
-
-						<!-- Leg 2 -->
-						<path d="M 8.5,12.5 L 4.5,8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-						<!-- Fin 2 -->
-						<polygon points="4.5,8.5 2.5,9.5 2,6.5 4,7.5" />
+					<svg class="diver-svg" viewBox="0 0 1200 1200" fill="currentColor">
+						<defs>
+							<clipPath id="diver-clip-b">
+								<path d="m287 347h599v545h-599z"/>
+							</clipPath>
+							<clipPath id="diver-clip-a">
+								<path d="m1062.8 332.82-729.96-195.59-195.59 729.96 729.96 195.59z"/>
+							</clipPath>
+						</defs>
+						<g clip-path="url(#diver-clip-b)">
+							<g clip-path="url(#diver-clip-a)">
+								<path d="m503.59 347.28c-5.793 40.414 12.348 77.18 40.316 119.64-23.93 29.145-32.039 61.641-33.816 96.68 11.363 15.039 24.43 27.824 41.18 37.523 5.8828 3.4062 12.801 6.6758 20.395 9.6211-22.176-50.273-1.1211-99.051 19.109-134.2-41.07-50.043-73.324-77.473-87.18-129.27zm292.12 265.45-169.47-36.582c-22.453 3.5859-24.961 32.078-4.5352 40.598l168.62 36.637c20.391-6.1055 25.203-28.691 5.3867-40.652zm70.457 75.812c-18.09-10.477-41.215-4.2695-51.652 13.859s-4.2305 41.316 13.859 51.793c18.09 10.477 41.215 4.2695 51.652-13.859 10.438-18.129 4.2305-41.32-13.859-51.793zm-422.86-219.96c-42.438 27.949-90.562 35.098-155.57 41.223 53.672 13.57 87.648 15.738 129.12 4.7344 86.402 155.08 138.11 202.53 317.05 227.36 1.7344 88.543 30.906 114.19 107.15 149.59 16.953 1.0664 28.293-18.633 18.898-32.828-73.438-25.016-95.16-63.855-72.379-164.46 2.8672-13.957-3.6602-21.637-12.094-24.512-77.215-18.453-179.07-24.91-231.78-55.43-52.703-30.516-73.176-86.141-100.39-145.67z"/>
+							</g>
+						</g>
 					</svg>
 					<span class="gauge-depth-label">0m</span>
 				</div>
