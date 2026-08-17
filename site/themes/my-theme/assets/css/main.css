@@ -732,17 +732,18 @@ body.page-cv .page-content li::before {
 .diver-svg {
   width: 64px;
   height: 64px;
-  color: var(--accent);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  color: #e04a30;
+  opacity: 1;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
   animation: diver-swim 1.2s ease-in-out infinite alternate;
 }
 
 @keyframes diver-swim {
   0% {
-    transform: rotate(-12deg);
+    transform: rotate(-4deg);
   }
   100% {
-    transform: rotate(12deg);
+    transform: rotate(4deg);
   }
 }
 
@@ -994,34 +995,6 @@ body.page-cv .page-content li::before {
 
 .hero-photo-card:hover .hero-photo {
   transform: scale(1.03);
-}
-
-.hero-coral-overlay {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  pointer-events: none;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
-  z-index: 10;
-  transition: transform 0.4s ease;
-}
-
-.hero-coral-overlay.coral-left {
-  left: -40px;
-  bottom: -30px;
-}
-
-.hero-coral-overlay.coral-right {
-  right: -30px;
-  top: -40px;
-}
-
-.hero-photo-card:hover .hero-coral-overlay.coral-left {
-  transform: translateY(-5px) rotate(-5deg);
-}
-
-.hero-photo-card:hover .hero-coral-overlay.coral-right {
-  transform: translateY(5px) rotate(5deg);
 }
 
 /* ============================================================

@@ -1,179 +1,233 @@
 {{ define "main" }}
 <div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero-container">
+    <div class="hero-text">
+      <span class="hero-pretitle">Postdoctoral Scientist & AAUS Diver</span>
+      <h1 class="hero-title">Sara Swaminathan, PhD</h1>
+      <p class="hero-tagline">
+        I use community ecology to understand how coral reef ecosystems are
+        shaped by environmental change, aiming to inform marine conservation,
+        restoration, and resilience in a changing ocean.
+      </p>
+      <div class="hero-buttons">
+        <a href="/cv/" class="hero-btn primary">View Research & CV</a>
+        <a href="/science-illustrations/" class="hero-btn secondary"
+          >Scientific Art</a
+        >
+      </div>
+    </div>
 
-	<!-- Hero Section -->
-	<section class="hero-container">
-		<div class="hero-text">
-			<span class="hero-pretitle">Postdoctoral Scientist & AAUS Diver</span>
-			<h1 class="hero-title">Sara Swaminathan, PhD</h1>
-			<p class="hero-tagline">
-				I use community ecology to understand how coral reef ecosystems are shaped by environmental change, aiming to inform marine conservation, restoration, and resilience in a changing ocean.
-			</p>
-			<div class="hero-buttons">
-				<a href="/cv/" class="hero-btn primary">View Research & CV</a>
-				<a href="/science-illustrations/" class="hero-btn secondary">Scientific Art</a>
-			</div>
-		</div>
+    <div class="hero-visual">
+      <div class="hero-photo-card">
+        <div class="hero-photo-wrapper">
+          <img
+            src="/images/sara-benthic-transect2.JPG"
+            alt="Sara Swaminathan during benthic transect"
+            class="hero-photo"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
-		<div class="hero-visual">
-			<div class="hero-photo-card">
-				<div class="hero-photo-wrapper">
-					<img src="/images/sara-benthic-transect2.JPG" alt="Sara Swaminathan during benthic transect" class="hero-photo">
-				</div>
-				<!-- Overlaid Coral Drawings -->
-				<img src="/svgs/resistantCoral-VECTOR.svg" alt="" class="hero-coral-overlay coral-left">
-				<img src="/svgs/susc-coral-VECTOR.svg" alt="" class="hero-coral-overlay coral-right">
-			</div>
-		</div>
-	</section>
+  <!-- Interactive Coral Reef Showcase -->
+  <section class="interactive-reef">
+    <h2 class="reef-title">Exploring the Reef</h2>
+    <p class="reef-subtitle">Some of my illustrations from the field!</p>
 
-	<!-- Interactive Coral Reef Showcase -->
-	<section class="interactive-reef">
-		<h2 class="reef-title">Exploring the Reef</h2>
-		<p class="reef-subtitle">
-			Hover over or tap these organisms to identify the key species from my research, all illustrated by me for scientific communication.
-		</p>
+    <div class="reef-showcase">
+      <div class="reef-organism">
+        <div class="organism-svg-wrapper">
+          <img
+            src="/svgs/atlantic-blue-tang-VECTOR.svg"
+            alt="Atlantic Blue Tang"
+          />
+        </div>
+        <div class="organism-label">
+          <span class="organism-name">Atlantic Blue Tang</span>
+          <span class="organism-scientific">Acanthurus coeruleus</span>
+        </div>
+      </div>
 
-		<div class="reef-showcase">
-			<div class="reef-organism">
-				<div class="organism-svg-wrapper">
-					<img src="/svgs/atlantic-blue-tang-VECTOR.svg" alt="Atlantic Blue Tang">
-				</div>
-				<div class="organism-label">
-					<span class="organism-name">Atlantic Blue Tang</span>
-					<span class="organism-scientific">Acanthurus coeruleus</span>
-				</div>
-			</div>
+      <div class="reef-organism">
+        <div class="organism-svg-wrapper">
+          <img src="/svgs/resistantCoral-VECTOR.svg" alt="Resistant Coral" />
+        </div>
+        <div class="organism-label">
+          <span class="organism-name">Resistant Coral</span>
+          <span class="organism-scientific">Porites astreoides</span>
+        </div>
+      </div>
 
-			<div class="reef-organism">
-				<div class="organism-svg-wrapper">
-					<img src="/svgs/resistantCoral-VECTOR.svg" alt="Resistant Coral">
-				</div>
-				<div class="organism-label">
-					<span class="organism-name">Resistant Coral</span>
-					<span class="organism-scientific">Porites astreoides</span>
-				</div>
-			</div>
+      <div class="reef-organism">
+        <div class="organism-svg-wrapper">
+          <img src="/svgs/susc-coral-VECTOR.svg" alt="Susceptible Coral" />
+        </div>
+        <div class="organism-label">
+          <span class="organism-name">Brain Coral</span>
+          <span class="organism-scientific">Colpophyllia natans</span>
+        </div>
+      </div>
 
-			<div class="reef-organism">
-				<div class="organism-svg-wrapper">
-					<img src="/svgs/susc-coral-VECTOR.svg" alt="Susceptible Coral">
-				</div>
-				<div class="organism-label">
-					<span class="organism-name">Brain Coral</span>
-					<span class="organism-scientific">Colpophyllia natans</span>
-				</div>
-			</div>
+      <div class="reef-organism">
+        <div class="organism-svg-wrapper">
+          <img src="/svgs/gorgonianVECTOR.svg" alt="Sea Fan" />
+        </div>
+        <div class="organism-label">
+          <span class="organism-name">Gorgonian Sea Fan</span>
+          <span class="organism-scientific">Gorgonia ventalina</span>
+        </div>
+      </div>
 
-			<div class="reef-organism">
-				<div class="organism-svg-wrapper">
-					<img src="/svgs/gorgonianVECTOR.svg" alt="Sea Fan">
-				</div>
-				<div class="organism-label">
-					<span class="organism-name">Gorgonian Sea Fan</span>
-					<span class="organism-scientific">Gorgonia ventalina</span>
-				</div>
-			</div>
+      <div class="reef-organism">
+        <div class="organism-svg-wrapper">
+          <img
+            src="/svgs/foureyebutterflyfish-VECTOR.SVG"
+            alt="Foureye Butterflyfish"
+          />
+        </div>
+        <div class="organism-label">
+          <span class="organism-name">Butterflyfish</span>
+          <span class="organism-scientific">Chaetodon capistratus</span>
+        </div>
+      </div>
 
-			<div class="reef-organism">
-				<div class="organism-svg-wrapper">
-					<img src="/svgs/foureyebutterflyfish-VECTOR.SVG" alt="Foureye Butterflyfish">
-				</div>
-				<div class="organism-label">
-					<span class="organism-name">Butterflyfish</span>
-					<span class="organism-scientific">Chaetodon capistratus</span>
-				</div>
-			</div>
+      <div class="reef-organism">
+        <div class="organism-svg-wrapper">
+          <img src="/svgs/thallasoma-VECTOR.svg" alt="Bluehead Wrasse" />
+        </div>
+        <div class="organism-label">
+          <span class="organism-name">Bluehead Wrasse</span>
+          <span class="organism-scientific">Thalassoma bifasciatum</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-			<div class="reef-organism">
-				<div class="organism-svg-wrapper">
-					<img src="/svgs/thallasoma-VECTOR.svg" alt="Bluehead Wrasse">
-				</div>
-				<div class="organism-label">
-					<span class="organism-name">Bluehead Wrasse</span>
-					<span class="organism-scientific">Thalassoma bifasciatum</span>
-				</div>
-			</div>
-		</div>
-	</section>
+  <!-- Publications Highlights -->
+  <section class="publication-highlights">
+    <h2 class="reef-title">Featured Publications</h2>
+    <p class="reef-subtitle">
+      Recent research on marine disease ecology and coral ecophysiology.
+    </p>
 
-	<!-- Publications Highlights -->
-	<section class="publication-highlights">
-		<h2 class="reef-title">Featured Publications</h2>
-		<p class="reef-subtitle">Recent research on marine disease ecology and coral ecophysiology.</p>
+    <div class="publications-grid">
+      <div class="pub-card">
+        <div>
+          <span class="pub-tag">Community Ecology</span>
+          <h3 class="pub-title">
+            Stony coral tissue loss disease indirectly alters reef communities
+          </h3>
+          <p class="pub-authors">
+            Swaminathan SD, Lafferty KD, Knight NS, and Altieri AH
+          </p>
+          <p class="pub-journal">Science Advances, 10(18) (2024)</p>
+        </div>
+        <a
+          href="https://doi.org/10.1126/sciadv.adk6808"
+          target="_blank"
+          rel="noopener"
+          class="pub-link"
+          >Read Paper &rarr;</a
+        >
+      </div>
 
-		<div class="publications-grid">
-			<div class="pub-card">
-				<div>
-					<span class="pub-tag">Community Ecology</span>
-					<h3 class="pub-title">Stony coral tissue loss disease indirectly alters reef communities</h3>
-					<p class="pub-authors">Swaminathan SD, Lafferty KD, Knight NS, and Altieri AH</p>
-					<p class="pub-journal">Science Advances, 10(18) (2024)</p>
-				</div>
-				<a href="https://doi.org/10.1126/sciadv.adk6808" target="_blank" rel="noopener" class="pub-link">Read Paper &rarr;</a>
-			</div>
+      <div class="pub-card">
+        <div>
+          <span class="pub-tag">Ecophysiology</span>
+          <h3 class="pub-title">
+            Divergent responses of the coral holobiont to deoxygenation and
+            prior environmental stress
+          </h3>
+          <p class="pub-authors">
+            Swaminathan SD, Meyer JL, Johnson MD, Paul VJ, Bartels E and Altieri
+            AH
+          </p>
+          <p class="pub-journal">
+            Frontiers in Marine Science, 10:1301474 (2024)
+          </p>
+        </div>
+        <a
+          href="https://doi.org/10.3389/fmars.2023.1301474"
+          target="_blank"
+          rel="noopener"
+          class="pub-link"
+          >Read Paper &rarr;</a
+        >
+      </div>
+    </div>
+  </section>
 
-			<div class="pub-card">
-				<div>
-					<span class="pub-tag">Ecophysiology</span>
-					<h3 class="pub-title">Divergent responses of the coral holobiont to deoxygenation and prior environmental stress</h3>
-					<p class="pub-authors">Swaminathan SD, Meyer JL, Johnson MD, Paul VJ, Bartels E and Altieri AH</p>
-					<p class="pub-journal">Frontiers in Marine Science, 10:1301474 (2024)</p>
-				</div>
-				<a href="https://doi.org/10.3389/fmars.2023.1301474" target="_blank" rel="noopener" class="pub-link">Read Paper &rarr;</a>
-			</div>
-		</div>
-	</section>
+  <!-- Fieldwork Log Section -->
+  <section class="dive-log-section">
+    <h2 class="reef-title">Field Notes & Dive Log</h2>
+    <p class="reef-subtitle">
+      A glimpse into AAUS scientific research diving and laboratory
+      experimentation.
+    </p>
 
-	<!-- Fieldwork Log Section -->
-	<section class="dive-log-section">
-		<h2 class="reef-title">Field Notes & Dive Log</h2>
-		<p class="reef-subtitle">A glimpse into AAUS scientific research diving and laboratory experimentation.</p>
+    <div class="dive-log-grid">
+      <div class="dive-card">
+        <div class="dive-img-wrapper">
+          <img
+            src="/images/sara_dive2.JPG"
+            alt="Research Diving in Florida Keys"
+            class="dive-img"
+          />
+          <span class="dive-depth-badge">12m</span>
+        </div>
+        <div class="dive-info">
+          <span class="dive-location">Florida Keys, USA</span>
+          <h3 class="dive-title">Benthic Transects & Restoration</h3>
+          <p class="dive-notes">
+            Completed over 300 AAUS scientific research dives in Florida,
+            Panama, Belize, and French Polynesia. Conducting predator exclusion
+            experiments to improve coral restoration.
+          </p>
+        </div>
+      </div>
 
-		<div class="dive-log-grid">
-			<div class="dive-card">
-				<div class="dive-img-wrapper">
-					<img src="/images/sara_dive2.JPG" alt="Research Diving in Florida Keys" class="dive-img">
-					<span class="dive-depth-badge">12m</span>
-				</div>
-				<div class="dive-info">
-					<span class="dive-location">Florida Keys, USA</span>
-					<h3 class="dive-title">Benthic Transects & Restoration</h3>
-					<p class="dive-notes">
-						Completed over 300 AAUS scientific research dives in Florida, Panama, Belize, and French Polynesia. Conducting predator exclusion experiments to improve coral restoration.
-					</p>
-				</div>
-			</div>
+      <div class="dive-card">
+        <div class="dive-img-wrapper">
+          <img
+            src="/images/sara_boat.jpeg"
+            alt="Smithsonian Research Boat"
+            class="dive-img"
+          />
+          <span class="dive-depth-badge">Surface</span>
+        </div>
+        <div class="dive-info">
+          <span class="dive-location">Bocas del Toro, Panama</span>
+          <h3 class="dive-title">STRI Fellowship & Tropical Ecology</h3>
+          <p class="dive-notes">
+            Collaborating with Smithsonian Tropical Research Institute fellows
+            to sample coral communities and analyze the shifts in fish
+            biodiversity after major thermal stress events.
+          </p>
+        </div>
+      </div>
 
-			<div class="dive-card">
-				<div class="dive-img-wrapper">
-					<img src="/images/sara_boat.jpeg" alt="Smithsonian Research Boat" class="dive-img">
-					<span class="dive-depth-badge">Surface</span>
-				</div>
-				<div class="dive-info">
-					<span class="dive-location">Bocas del Toro, Panama</span>
-					<h3 class="dive-title">STRI Fellowship & Tropical Ecology</h3>
-					<p class="dive-notes">
-						Collaborating with Smithsonian Tropical Research Institute fellows to sample coral communities and analyze the shifts in fish biodiversity after major thermal stress events.
-					</p>
-				</div>
-			</div>
-
-			<div class="dive-card">
-				<div class="dive-img-wrapper">
-					<img src="/images/sara_science.png" alt="Lab Mesocosms and Physiology" class="dive-img">
-					<span class="dive-depth-badge">Lab</span>
-				</div>
-				<div class="dive-info">
-					<span class="dive-location">Bigelow Laboratory, Maine</span>
-					<h3 class="dive-title">Microbial & Multi-Stressor Mesocosms</h3>
-					<p class="dive-notes">
-						Operating wetlab mesocosms to test how deoxygenation and warming affect coral physiology and the microbiome. Designing educational outreach tools like the "Reefologies" game.
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
+      <div class="dive-card">
+        <div class="dive-img-wrapper">
+          <img
+            src="/images/sara_science.png"
+            alt="Lab Mesocosms and Physiology"
+            class="dive-img"
+          />
+          <span class="dive-depth-badge">Lab</span>
+        </div>
+        <div class="dive-info">
+          <span class="dive-location">Bigelow Laboratory, Maine</span>
+          <h3 class="dive-title">Microbial & Multi-Stressor Mesocosms</h3>
+          <p class="dive-notes">
+            Operating wetlab mesocosms to test how deoxygenation and warming
+            affect coral physiology and the microbiome. Designing educational
+            outreach tools like the "Reefologies" game.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 {{ end }}
