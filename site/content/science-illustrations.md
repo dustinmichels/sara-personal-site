@@ -13,7 +13,7 @@ title: "ART & COMMUNICATION"
 <img src="/svgs/resistantCoral-VECTOR.svg" alt="Mustard Hill Coral (Porites astreoides)">
 <img src="/svgs/susc-coral-VECTOR.svg" alt="Brain Coral (Colpophyllia natans)">
 <img src="/svgs/cca-VECTOR.svg" alt="Crustose Coralline Algae (CCA)">
-<img src="/svgs/foureyebutterflyfish-VECTOR.SVG" alt="Foureye Butterflyfish (Chaetodon capistratus)">
+<img src="/svgs/foureyebutterflyfish-VECTOR.svg" alt="Foureye Butterflyfish (Chaetodon capistratus)">
 <img src="/svgs/turfAlgaeVECTOR.svg" alt="Turf Algae Canopy">
 <img src="/svgs/zoanthidVECTOR.svg" alt="Mat Zoanthid (Zoanthus pulchellus)">
 {{< /gallery >}}
