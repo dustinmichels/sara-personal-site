@@ -15,7 +15,7 @@
         <!-- Benthic and Pelagic Organisms -->
         <div class="aquarium-organisms">
             <!-- Benthic Plants and Corals (positioned by data) -->
-            {{ range .Site.Data.aquarium.items }}
+            {{ range hugo.Data.aquarium.items }}
                 {{ if eq .type "plant" }}
                     {{ $nameParts := split .name "(" }}
                     {{ $commonName := index $nameParts 0 | strings.TrimSpace }}
@@ -41,7 +41,7 @@
             {{ end }}
 
             <!-- Pelagic Fish (swimming dynamically via JS) -->
-            {{ range .Site.Data.aquarium.items }}
+            {{ range hugo.Data.aquarium.items }}
                 {{ if eq .type "fish" }}
                     {{ $fish := . }}
                     {{ $nameParts := split .name "(" }}
