@@ -30,7 +30,7 @@
                         <img src="{{ .image | relURL }}" 
                              class="aquarium-plant {{ if .sway }}swaying{{ end }}" 
                              alt="{{ .name }}"
-                             {{ if .sway }}style="animation-duration: {{ .sway_duration }}s; animation-delay: {{ .sway_delay }}s;"{{ end }}>
+                             {{ if .sway }}style="animation-duration: {{ .sway_duration }}s; animation-delay: {{ .sway_delay }}s;{{ if .sway_amount }} --sway-amount: {{ .sway_amount }}deg;{{ end }}"{{ end }}>
                         <div class="organism-tooltip">
                             <div class="tooltip-common">{{ $commonName }}</div>
                             {{ if $scientificName }}<div class="tooltip-scientific">({{ $scientificName }})</div>{{ end }}
@@ -177,7 +177,7 @@
 
 @keyframes sway {
     0% { transform: rotate(0deg); }
-    50% { transform: rotate(2.5deg) skewX(1.5deg); }
+    50% { transform: rotate(var(--sway-amount, 2.5deg)) skewX(1.5deg); }
     100% { transform: rotate(0deg); }
 }
 
@@ -491,10 +491,10 @@ document.addEventListener('DOMContentLoaded', () => {
         bubbleContainer.appendChild(bubble);
         bubble.addEventListener('animationend', () => bubble.remove(), { once: true });
 
-        setTimeout(spawnBubble, Math.random() * 1500 + 300);
+        setTimeout(spawnBubble, Math.random() * 2000 + 800);
     };
 
-    for (let i = 0; i < 5; i += 1) {
+    for (let i = 0; i < 3; i += 1) {
         setTimeout(spawnBubble, Math.random() * 2000);
     }
 

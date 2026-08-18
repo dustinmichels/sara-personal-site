@@ -9,12 +9,25 @@ base_speed = 1.5
 image = "/svgs/macroalgaeVECTOR.svg"
 name = "Macroalgae (Dictyota sp.)"
 type = "plant"
-left = 54
-width = 80
+left = 49
+width = 105
 bottom = 30
 sway = true
 sway_duration = 5
 sway_delay = -3
+sway_amount = 7
+
+[[items]]
+image = "/svgs/macroalgaeVECTOR.svg"
+name = "Macroalgae (Dictyota sp.)"
+type = "plant"
+left = 57
+width = 100
+bottom = 28
+sway = true
+sway_duration = 5
+sway_delay = -6
+sway_amount = 7
 
 [[items]]
 image = "/svgs/gorgonianVECTOR.svg"
@@ -26,6 +39,7 @@ bottom = 25
 sway = true
 sway_duration = 7
 sway_delay = -1
+sway_amount = 5
 
 [[items]]
 image = "/svgs/sponge-VECTOR.svg"
@@ -33,7 +47,7 @@ name = "Boring Sponge (Cliona delitrix)"
 type = "plant"
 left = 23
 width = 70
-bottom = 15
+bottom = 45
 sway = false
 
 [[items]]
@@ -58,7 +72,7 @@ name = "Brain Coral (Colpophyllia natans)"
 type = "plant"
 left = 32
 width = 105
-bottom = 10
+bottom = 40
 sway = false
 
 [[items]]
