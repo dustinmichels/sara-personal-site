@@ -15,3 +15,8 @@ run = "hugo server -D"
 description = "Build the Hugo site for production"
 dir = "site"
 run = "hugo --gc --minify"
+
+[tasks.build-test]
+description = "Build the Hugo site for the Netlify staging environment"
+dir = "site"
+run = "hugo --baseURL=\"https://bespoke-boba-be8025.netlify.app/\" --gc --minify"
