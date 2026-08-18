@@ -11,7 +11,7 @@ Generally, edit content in:
 
 Images are in:
 
-- `site/static/images/` (pictures on site)
+- `site/assets/images/` (pictures on site)
 - `site/static/svgs/` (for the science art)
 
 Don't worry about auto-generated content:
