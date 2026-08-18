@@ -2,7 +2,7 @@
 {{- $alt := .Get "alt" -}}
 {{- $res := resources.Get (printf "images/%s" $src) -}}
 {{- if $res -}}
-  {{- $img := $res.Process "resize 1200x webp" -}}
+  {{- $img := $res.Filter (images.AutoOrient) (images.Process "resize 1200x webp") -}}
   <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $alt }}" loading="lazy">
 {{- else -}}
   {{- warnf "photo shortcode: resource not found: images/%s" $src -}}
