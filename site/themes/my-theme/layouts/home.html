@@ -21,11 +21,15 @@
 		<div class="hero-visual">
 			<div class="hero-photo-card">
 				<div class="hero-photo-wrapper">
-					<img
-						src="/images/sara-benthic-transect2.JPG"
-						alt="Sara Swaminathan during benthic transect"
-						class="hero-photo"
-					/>
+				{{- $heroImg := (resources.Get "images/sara-benthic-transect2.JPG").Process "resize 1200x webp" -}}
+				<img
+					src="{{ $heroImg.RelPermalink }}"
+					width="{{ $heroImg.Width }}"
+					height="{{ $heroImg.Height }}"
+					alt="Sara Swaminathan during benthic transect"
+					class="hero-photo"
+					loading="lazy"
+				/>
 				</div>
 			</div>
 		</div>
@@ -176,11 +180,15 @@
 		<div class="dive-log-grid">
 			<div class="dive-card">
 				<div class="dive-img-wrapper">
-					<img
-						src="/images/sara_dive2.JPG"
-						alt="Research Diving in Florida Keys"
-						class="dive-img"
-					/>
+				{{- $dive2Img := (resources.Get "images/sara_dive2.JPG").Process "resize 1200x webp" -}}
+				<img
+					src="{{ $dive2Img.RelPermalink }}"
+					width="{{ $dive2Img.Width }}"
+					height="{{ $dive2Img.Height }}"
+					alt="Research Diving in Florida Keys"
+					class="dive-img"
+					loading="lazy"
+				/>
 					<span class="dive-depth-badge">12m</span>
 				</div>
 				<div class="dive-info">
@@ -196,11 +204,15 @@
 
 			<div class="dive-card">
 				<div class="dive-img-wrapper">
-					<img
-						src="/images/sara_boat.jpeg"
-						alt="Smithsonian Research Boat"
-						class="dive-img"
-					/>
+				{{- $boatImg := (resources.Get "images/sara_boat.jpeg").Process "resize 1200x webp" -}}
+				<img
+					src="{{ $boatImg.RelPermalink }}"
+					width="{{ $boatImg.Width }}"
+					height="{{ $boatImg.Height }}"
+					alt="Smithsonian Research Boat"
+					class="dive-img"
+					loading="lazy"
+				/>
 					<span class="dive-depth-badge">Surface</span>
 				</div>
 				<div class="dive-info">
@@ -216,11 +228,15 @@
 
 			<div class="dive-card">
 				<div class="dive-img-wrapper">
-					<img
-						src="/images/sara_science.png"
-						alt="Lab Mesocosms and Physiology"
-						class="dive-img"
-					/>
+				{{- $scienceImg := (resources.Get "images/sara_science.png").Process "resize 1200x webp" -}}
+				<img
+					src="{{ $scienceImg.RelPermalink }}"
+					width="{{ $scienceImg.Width }}"
+					height="{{ $scienceImg.Height }}"
+					alt="Lab Mesocosms and Physiology"
+					class="dive-img"
+					loading="lazy"
+				/>
 					<span class="dive-depth-badge">Lab</span>
 				</div>
 				<div class="dive-info">

@@ -18,16 +18,16 @@ title: "ABOUT ME"
 </div>
 
 {{< gallery >}}
-<img src="/images/sara_boat.jpeg" alt="Research Vessel, Bocas del Toro, Panama">
-<img src="/images/sara_science.png" alt="Analyzing Coral Samples in the Lab">
-<img src="/images/sara_dive2.JPG" alt="Preparing for a Benthic Transect Dive">
-<img src="/images/sara_beach.jpg" alt="Field Site Beach Survey">
-<img src="/images/sara_boat2.jpeg" alt="Deploying Water Quality Sondes">
-<img src="/images/sara_bug.jpeg" alt="Inspecting Marine Specimen Collections">
-<img src="/images/sara_event.jpeg" alt="Presenting Coral Research at a Symposium">
-<img src="/images/sara_dive.jpg" alt="Underwater Ecosystem Monitoring">
-<img src="/images/sara_present.jpeg" alt="Invited Talk on Community Resilience">
-<img src="/images/sara_mermaid.jpg" alt="Underwater Scientific Research">
-<img src="/images/sara_sea.JPG" alt="Heading Out to the Reef Site">
-<img src="/images/sara_coral.JPG" alt="Healthy Coral Colonies in the Florida Keys">
+{{< photo src="sara_boat.jpeg" alt="Research Vessel, Bocas del Toro, Panama" >}}
+{{< photo src="sara_science.png" alt="Analyzing Coral Samples in the Lab" >}}
+{{< photo src="sara_dive2.JPG" alt="Preparing for a Benthic Transect Dive" >}}
+{{< photo src="sara_beach.jpg" alt="Field Site Beach Survey" >}}
+{{< photo src="sara_boat2.jpeg" alt="Deploying Water Quality Sondes" >}}
+{{< photo src="sara_bug.jpeg" alt="Inspecting Marine Specimen Collections" >}}
+{{< photo src="sara_event.jpeg" alt="Presenting Coral Research at a Symposium" >}}
+{{< photo src="sara_dive.jpg" alt="Underwater Ecosystem Monitoring" >}}
+{{< photo src="sara_present.jpeg" alt="Invited Talk on Community Resilience" >}}
+{{< photo src="sara_mermaid.jpg" alt="Underwater Scientific Research" >}}
+{{< photo src="sara_sea.JPG" alt="Heading Out to the Reef Site" >}}
+{{< photo src="sara_coral.JPG" alt="Healthy Coral Colonies in the Florida Keys" >}}
 {{< /gallery >}}

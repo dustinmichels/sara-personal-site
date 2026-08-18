@@ -126,6 +126,7 @@
     border-radius: clamp(16px, 2vw, 20px);
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 0 100px rgba(0,0,0,0.6);
+    cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cmVjdCB4PSIxMSIgeT0iMSIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEzIiByeD0iMyIgZmlsbD0iI2U4OTM1YSIvPjxyZWN0IHg9IjkiIHk9IjEiIHdpZHRoPSIxNCIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iI2M4NjgzMCIvPjxjaXJjbGUgY3g9IjE0IiBjeT0iOCIgcj0iMS4zIiBmaWxsPSIjYzA2MDMwIi8+PGNpcmNsZSBjeD0iMTgiIGN5PSI4IiByPSIxLjMiIGZpbGw9IiNjMDYwMzAiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjExIiByPSIxLjMiIGZpbGw9IiNjMDYwMzAiLz48Y2lyY2xlIGN4PSIxMyIgY3k9IjE5IiByPSIyLjUiIGZpbGw9IiNjODc4M2EiIG9wYWNpdHk9IjAuOSIvPjxjaXJjbGUgY3g9IjE5IiBjeT0iMjQiIHI9IjIiIGZpbGw9IiNiODY4MjgiIG9wYWNpdHk9IjAuNzUiLz48Y2lyY2xlIGN4PSIxNSIgY3k9IjI4IiByPSIxLjgiIGZpbGw9IiNjODc4M2EiIG9wYWNpdHk9IjAuNTUiLz48L3N2Zz4=") 16 1, crosshair;
 }
 
 /* Glass shine overlay */
@@ -398,6 +399,22 @@
         width: 100%;
     }
 }
+
+.food-pellet {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    margin-left: -3.5px;
+    margin-top: -3.5px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #e8a060, #9c5520);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    pointer-events: none;
+    z-index: 25;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
 </style>
 
 <script>
@@ -414,6 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let tankHeight = tank.clientHeight;
     let sceneScale = 1;
     const fishes = [];
+    const foodPellets = [];
 
     const getSceneScale = () => Math.max(0.6, Math.min(1, tank.clientWidth / 1100));
 
@@ -496,6 +514,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (let i = 0; i < 3; i += 1) {
         setTimeout(spawnBubble, Math.random() * 2000);
+    }
+
+    class FoodPellet {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.eaten = false;
+            this.lifetime = 900;
+            this.vy = 0.5 + Math.random() * 0.4;
+            this.vx = (Math.random() - 0.5) * 0.5;
+
+            this.element = document.createElement('div');
+            this.element.className = 'food-pellet';
+            this.element.style.opacity = '0';
+            this.element.style.transform = 'scale(0)';
+            organismsContainer.appendChild(this.element);
+            this.updateDOM();
+            // Trigger appear animation after paint
+            requestAnimationFrame(() => {
+                this.element.style.opacity = '1';
+                this.element.style.transform = 'scale(1)';
+            });
+        }
+
+        updateDOM() {
+            this.element.style.left = `${this.x}px`;
+            this.element.style.top = `${this.y}px`;
+        }
+
+        update() {
+            if (this.eaten) return;
+            this.lifetime -= 1;
+            if (this.lifetime <= 0) {
+                this.eat();
+                return;
+            }
+            const floorY = tankHeight - 95 * sceneScale;
+            if (this.y < floorY) {
+                this.y += this.vy;
+                this.x += this.vx;
+                this.updateDOM();
+            }
+        }
+
+        eat() {
+            if (this.eaten) return;
+            this.eaten = true;
+            this.element.style.opacity = '0';
+            this.element.style.transform = 'scale(0)';
+            setTimeout(() => this.element.remove(), 400);
+        }
     }
 
     class Fish {
@@ -601,13 +670,56 @@ document.addEventListener('DOMContentLoaded', () => {
             this.vy += (this.targetVy - this.vy) * 0.03;
         }
 
-        update() {
-            this.wander();
+        update(pellets) {
+            const seekingFood = pellets && pellets.length > 0 && this.seekFood(pellets);
+            if (seekingFood) {
+                this.vx += (this.targetVx - this.vx) * 0.06;
+                this.vy += (this.targetVy - this.vy) * 0.06;
+            } else {
+                this.wander();
+            }
             this.x += this.vx;
             this.y += this.vy;
             this.constrainPosition();
             this.updateDOM();
         }
+
+        seekFood(pellets) {
+            let nearestFood = null;
+            let nearestDist = Infinity;
+            const fishCX = this.x + this.width / 2;
+            const fishCY = this.y + this.height / 2;
+
+            for (const pellet of pellets) {
+                if (pellet.eaten) continue;
+                const dx = pellet.x - fishCX;
+                const dy = pellet.y - fishCY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < nearestDist) {
+                    nearestDist = dist;
+                    nearestFood = pellet;
+                }
+            }
+
+            const ATTRACT_RADIUS = 280;
+            const EAT_RADIUS = 22;
+
+            if (!nearestFood || nearestDist > ATTRACT_RADIUS) return false;
+
+            if (nearestDist < EAT_RADIUS) {
+                nearestFood.eat();
+                return false;
+            }
+
+            const dx = nearestFood.x - fishCX;
+            const dy = nearestFood.y - fishCY;
+            const len = Math.sqrt(dx * dx + dy * dy);
+            const speed = this.baseSpeed * 2.0;
+            this.targetVx = (dx / len) * speed;
+            this.targetVy = (dy / len) * speed;
+            return true;
+        }
+
 
         updateDOM() {
             const scaleX = this.vx < 0 ? -1 : 1;
@@ -646,7 +758,11 @@ document.addEventListener('DOMContentLoaded', () => {
     syncSceneMetrics();
 
     const tick = () => {
-        fishes.forEach((fish) => fish.update());
+        fishes.forEach((fish) => fish.update(foodPellets));
+        foodPellets.forEach((pellet) => pellet.update());
+        for (let i = foodPellets.length - 1; i >= 0; i -= 1) {
+            if (foodPellets[i].eaten) foodPellets.splice(i, 1);
+        }
         requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
@@ -684,8 +800,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     fishes[i].reset();
                 }
             }
+            foodPellets.forEach((p) => p.element.remove());
+            foodPellets.length = 0;
         });
     }
+
+    tank.addEventListener('click', (e) => {
+        const rect = tank.getBoundingClientRect();
+        const cx = e.clientX - rect.left;
+        const cy = e.clientY - rect.top;
+        const count = 3 + Math.floor(Math.random() * 3);
+        for (let i = 0; i < count; i += 1) {
+            const ox = (Math.random() - 0.5) * 22;
+            const oy = (Math.random() - 0.5) * 12;
+            foodPellets.push(new FoodPellet(cx + ox, cy + oy));
+        }
+    });
 });
 </script>
 {{ end }}
