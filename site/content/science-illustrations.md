@@ -2,6 +2,8 @@
 title: "ART & COMMUNICATION"
 ---
 
+Here are some of my scientific illustrations. You can also [view as aquarium](/aquarium).
+
 ## Scientific Illustrations
 
 {{< gallery >}}

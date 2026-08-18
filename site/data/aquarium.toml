@@ -1,0 +1,98 @@
+[[items]]
+image = "/svgs/atlantic-blue-tang-VECTOR.svg"
+name = "Atlantic Blue Tang (Acanthurus coeruleus)"
+type = "fish"
+width = 90
+base_speed = 1.5
+
+[[items]]
+image = "/svgs/macroalgaeVECTOR.svg"
+name = "Macroalgae (Dictyota sp.)"
+type = "plant"
+left = 54
+width = 80
+bottom = 30
+sway = true
+sway_duration = 5
+sway_delay = -3
+
+[[items]]
+image = "/svgs/gorgonianVECTOR.svg"
+name = "Gorgonian Sea Fan (Gorgonia ventalina)"
+type = "plant"
+left = 10
+width = 130
+bottom = 25
+sway = true
+sway_duration = 7
+sway_delay = -1
+
+[[items]]
+image = "/svgs/sponge-VECTOR.svg"
+name = "Boring Sponge (Cliona delitrix)"
+type = "plant"
+left = 23
+width = 70
+bottom = 15
+sway = false
+
+[[items]]
+image = "/svgs/thallasoma-VECTOR.svg"
+name = "Bluehead Wrasse (Thalassoma bifasciatum)"
+type = "fish"
+width = 95
+base_speed = 1.8
+
+[[items]]
+image = "/svgs/resistantCoral-VECTOR.svg"
+name = "Mustard Hill Coral (Porites astreoides)"
+type = "plant"
+left = 66
+width = 95
+bottom = 15
+sway = false
+
+[[items]]
+image = "/svgs/susc-coral-VECTOR.svg"
+name = "Brain Coral (Colpophyllia natans)"
+type = "plant"
+left = 32
+width = 105
+bottom = 10
+sway = false
+
+[[items]]
+image = "/svgs/cca-VECTOR.svg"
+name = "Crustose Coralline Algae (CCA)"
+type = "plant"
+left = 45
+width = 75
+bottom = 5
+sway = false
+
+[[items]]
+image = "/svgs/foureyebutterflyfish-VECTOR.svg"
+name = "Foureye Butterflyfish (Chaetodon capistratus)"
+type = "fish"
+width = 80
+base_speed = 1.2
+
+[[items]]
+image = "/svgs/turfAlgaeVECTOR.svg"
+name = "Turf Algae Canopy"
+type = "plant"
+left = 87
+width = 90
+bottom = 20
+sway = true
+sway_duration = 6
+sway_delay = -2
+
+[[items]]
+image = "/svgs/zoanthidVECTOR.svg"
+name = "Mat Zoanthid (Zoanthus pulchellus)"
+type = "plant"
+left = 78
+width = 75
+bottom = 10
+sway = false

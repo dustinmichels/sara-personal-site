@@ -1,0 +1,691 @@
+{{ define "main" }}
+<div class="aquarium-page">
+    <div class="aquarium-header">
+        <h1 class="aquarium-title">{{ .Title }}</h1>
+        <p class="aquarium-intro">{{ .Description }}</p>
+    </div>
+
+    <div class="aquarium-tank">
+        <!-- Water Depth Gradient overlay -->
+        <div class="water-overlay"></div>
+
+        <!-- Floating bubbles container -->
+        <div class="aquarium-bubbles" aria-hidden="true"></div>
+
+        <!-- Benthic and Pelagic Organisms -->
+        <div class="aquarium-organisms">
+            <!-- Benthic Plants and Corals (positioned by data) -->
+            {{ range .Site.Data.aquarium.items }}
+                {{ if eq .type "plant" }}
+                    {{ $nameParts := split .name "(" }}
+                    {{ $commonName := index $nameParts 0 | strings.TrimSpace }}
+                    {{ $scientificName := "" }}
+                    {{ if gt (len $nameParts) 1 }}
+                        {{ $scientificName = index $nameParts 1 | replaceRE "\\)" "" | strings.TrimSpace }}
+                    {{ end }}
+                    <div class="aquarium-plant-wrapper"
+                         tabindex="0"
+                         style="--plant-left: {{ .left }}%; --plant-width: {{ .width }}px; --plant-bottom: {{ .bottom }}px; z-index: {{ if eq $commonName "Gorgonian Sea Fan" }}11{{ else }}12{{ end }};"
+                         data-name="{{ .name }}">
+                        <img src="{{ .image | relURL }}" 
+                             class="aquarium-plant {{ if .sway }}swaying{{ end }}" 
+                             alt="{{ .name }}"
+                             {{ if .sway }}style="animation-duration: {{ .sway_duration }}s; animation-delay: {{ .sway_delay }}s;"{{ end }}>
+                        <div class="organism-tooltip">
+                            <div class="tooltip-common">{{ $commonName }}</div>
+                            {{ if $scientificName }}<div class="tooltip-scientific">({{ $scientificName }})</div>{{ end }}
+                            <div class="tooltip-type">Benthos</div>
+                        </div>
+                    </div>
+                {{ end }}
+            {{ end }}
+
+            <!-- Pelagic Fish (swimming dynamically via JS) -->
+            {{ range .Site.Data.aquarium.items }}
+                {{ if eq .type "fish" }}
+                    {{ $fish := . }}
+                    {{ $nameParts := split .name "(" }}
+                    {{ $commonName := index $nameParts 0 | strings.TrimSpace }}
+                    {{ $scientificName := "" }}
+                    {{ if gt (len $nameParts) 1 }}
+                        {{ $scientificName = index $nameParts 1 | replaceRE "\\)" "" | strings.TrimSpace }}
+                    {{ end }}
+                    <!-- Instantiate 2 of each species -->
+                    {{ range $i := seq 2 }}
+                        <div class="aquarium-fish-wrapper"
+                             tabindex="0"
+                             data-name="{{ $fish.name }}"
+                             data-common="{{ $commonName }}"
+                             data-scientific="{{ $scientificName }}"
+                             data-image="{{ $fish.image | relURL }}"
+                             data-width="{{ $fish.width }}"
+                             data-base-speed="{{ $fish.base_speed }}"
+                             style="display: none;">
+                            <img src="{{ $fish.image | relURL }}" class="aquarium-fish" alt="{{ $fish.name }}">
+                            <div class="organism-tooltip">
+                                <div class="tooltip-common">{{ $commonName }}</div>
+                                {{ if $scientificName }}<div class="tooltip-scientific">({{ $scientificName }})</div>{{ end }}
+                                <div class="tooltip-type">Fish</div>
+                            </div>
+                        </div>
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        </div>
+
+        <!-- SVG Sea Floor Sand Dunes -->
+        <svg class="aquarium-floor" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0,50 Q300,15 600,45 T1200,40 L1200,120 L0,120 Z" fill="#e2c499" />
+            <path d="M0,75 Q400,40 800,80 T1200,70 L1200,120 L0,120 Z" fill="#cfb186" opacity="0.85" />
+        </svg>
+    </div>
+    
+    <div class="aquarium-controls">
+        <button id="add-fish-btn" class="aquarium-btn">Add Random Fish</button>
+        <button id="reset-aquarium-btn" class="aquarium-btn secondary">Reset Aquarium</button>
+    </div>
+</div>
+
+<style>
+.aquarium-page {
+    --aquarium-scale: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.aquarium-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.aquarium-title {
+    font-family: 'VCROSD-Mono', monospace, sans-serif;
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1;
+    color: var(--accent, #1a8cc3);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.aquarium-intro {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--text-secondary, #64748b);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.aquarium-tank {
+    position: relative;
+    height: clamp(320px, 62vw, 550px);
+    width: 100%;
+    background: linear-gradient(to bottom, #1ad1d7 0%, #005d8f 50%, #062f4a 100%);
+    border: clamp(4px, 0.7vw, 8px) solid #1e293b;
+    border-radius: clamp(16px, 2vw, 20px);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 0 100px rgba(0,0,0,0.6);
+}
+
+/* Glass shine overlay */
+.water-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 40%);
+    z-index: 5;
+}
+
+.aquarium-floor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(110px * var(--aquarium-scale));
+    z-index: 10;
+    pointer-events: none;
+}
+
+.aquarium-organisms {
+    position: absolute;
+    inset: 0;
+    z-index: 8;
+}
+
+.aquarium-plant-wrapper {
+    position: absolute;
+    left: var(--plant-left);
+    width: calc(var(--plant-width) * var(--aquarium-scale));
+    bottom: calc(var(--plant-bottom) * var(--aquarium-scale));
+    cursor: pointer;
+    transition: filter 0.2s ease;
+    touch-action: manipulation;
+}
+
+.aquarium-plant {
+    display: block;
+    width: 100%;
+    height: auto;
+    transform-origin: bottom center;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.25));
+}
+
+.aquarium-plant-wrapper:hover .aquarium-plant {
+    filter: drop-shadow(0 0 10px rgba(49, 210, 242, 0.8)) drop-shadow(2px 4px 6px rgba(0,0,0,0.25));
+}
+
+@keyframes sway {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(2.5deg) skewX(1.5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.swaying {
+    animation: sway 6s ease-in-out infinite alternate;
+}
+
+.aquarium-fish-wrapper {
+    position: absolute;
+    cursor: pointer;
+    z-index: 20;
+    transition: filter 0.2s ease;
+    touch-action: manipulation;
+}
+
+.aquarium-fish {
+    display: block;
+    width: 100%;
+    height: auto;
+    transform-origin: center center;
+    filter: drop-shadow(2px 3px 5px rgba(0,0,0,0.2));
+}
+
+.aquarium-fish-wrapper:hover .aquarium-fish {
+    filter: drop-shadow(0 0 10px rgba(49, 210, 242, 0.8)) drop-shadow(2px 3px 5px rgba(0,0,0,0.2));
+}
+
+.organism-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: rgba(15, 23, 42, 0.95);
+    color: #f8fafc;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    width: max-content;
+    max-width: min(18rem, calc(100vw - 2rem));
+    white-space: normal;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    border: 1.5px solid #38bdf8;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.organism-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: rgba(15, 23, 42, 0.95) transparent transparent transparent;
+}
+
+.aquarium-plant-wrapper:hover .organism-tooltip,
+.aquarium-plant-wrapper:focus-visible .organism-tooltip,
+.aquarium-plant-wrapper.is-tooltip-active .organism-tooltip,
+.aquarium-fish-wrapper:hover .organism-tooltip,
+.aquarium-fish-wrapper:focus-visible .organism-tooltip,
+.aquarium-fish-wrapper.is-tooltip-active .organism-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.aquarium-plant-wrapper:focus-visible,
+.aquarium-fish-wrapper:focus-visible {
+    outline: 2px solid rgba(56, 189, 248, 0.9);
+    outline-offset: 4px;
+}
+
+.tooltip-common {
+    font-weight: bold;
+    font-family: 'VCROSD-Mono', monospace, sans-serif;
+    color: #38bdf8;
+    font-size: 0.9rem;
+}
+
+.tooltip-scientific {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: #cbd5e1;
+    margin-top: 2px;
+}
+
+.tooltip-type {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    margin-top: 5px;
+}
+
+.aquarium-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.aquarium-btn {
+    font-family: 'VCROSD-Mono', monospace, sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #38bdf8;
+    color: #0f172a;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(56, 189, 248, 0.2);
+}
+
+.aquarium-btn:hover {
+    background: #0ea5e9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(14, 165, 233, 0.3);
+}
+
+.aquarium-btn:active {
+    transform: translateY(0);
+}
+
+.aquarium-btn.secondary {
+    background: #475569;
+    color: #f8fafc;
+    box-shadow: 0 4px 6px rgba(71, 85, 105, 0.2);
+}
+
+.aquarium-btn.secondary:hover {
+    background: #334155;
+    box-shadow: 0 6px 12px rgba(51, 65, 85, 0.3);
+}
+
+.bubble {
+    position: absolute;
+    bottom: -20px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.2), inset 2px 2px 4px rgba(0,0,0,0.1);
+    animation: rise 8s linear forwards;
+    z-index: 12;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-600px) translateX(var(--wobble, 10px));
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .aquarium-page {
+        padding: 0 0.35rem;
+    }
+
+    .aquarium-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .aquarium-controls {
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+    }
+
+    .aquarium-btn {
+        flex: 1 1 13rem;
+        padding: 0.85rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .organism-tooltip {
+        font-size: 0.75rem;
+        padding: 0.65rem 0.75rem;
+    }
+
+    .tooltip-common {
+        font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .aquarium-page {
+        padding: 0;
+    }
+
+    .aquarium-tank {
+        height: min(60vh, 360px);
+    }
+
+    .aquarium-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .aquarium-btn {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const aquariumPage = document.querySelector('.aquarium-page');
+    const tank = document.querySelector('.aquarium-tank');
+    const organismsContainer = document.querySelector('.aquarium-organisms');
+    const bubbleContainer = document.querySelector('.aquarium-bubbles');
+    if (!aquariumPage || !tank || !organismsContainer) {
+        return;
+    }
+
+    let tankWidth = tank.clientWidth;
+    let tankHeight = tank.clientHeight;
+    let sceneScale = 1;
+    const fishes = [];
+
+    const getSceneScale = () => Math.max(0.6, Math.min(1, tank.clientWidth / 1100));
+
+    const closeTooltips = () => {
+        document.querySelectorAll('.aquarium-plant-wrapper.is-tooltip-active, .aquarium-fish-wrapper.is-tooltip-active').forEach((el) => {
+            el.classList.remove('is-tooltip-active');
+        });
+    };
+
+    const bindInteractiveWrapper = (element) => {
+        if (!element || element.dataset.tooltipBound === 'true') {
+            return;
+        }
+
+        element.dataset.tooltipBound = 'true';
+        element.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const shouldOpen = !element.classList.contains('is-tooltip-active');
+            closeTooltips();
+            if (shouldOpen) {
+                element.classList.add('is-tooltip-active');
+            }
+        });
+
+        element.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                element.click();
+            } else if (event.key === 'Escape') {
+                element.classList.remove('is-tooltip-active');
+            }
+        });
+
+        element.addEventListener('focusout', (event) => {
+            if (!element.contains(event.relatedTarget)) {
+                element.classList.remove('is-tooltip-active');
+            }
+        });
+    };
+
+    document.querySelectorAll('.aquarium-plant-wrapper, .aquarium-fish-wrapper').forEach(bindInteractiveWrapper);
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.aquarium-plant-wrapper, .aquarium-fish-wrapper')) {
+            closeTooltips();
+        }
+    });
+
+    const syncSceneMetrics = () => {
+        tankWidth = tank.clientWidth;
+        tankHeight = tank.clientHeight;
+        sceneScale = getSceneScale();
+        aquariumPage.style.setProperty('--aquarium-scale', sceneScale.toFixed(3));
+        fishes.forEach((fish) => fish.resize());
+    };
+
+    window.addEventListener('resize', syncSceneMetrics);
+
+    const spawnBubble = () => {
+        if (!bubbleContainer) return;
+
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+
+        const size = Math.random() * 16 + 4;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${Math.random() * 98}%`;
+
+        const wobble = (Math.random() - 0.5) * 40;
+        bubble.style.setProperty('--wobble', `${wobble}px`);
+
+        const duration = Math.random() * 5 + 5;
+        bubble.style.animationDuration = `${duration}s`;
+
+        bubbleContainer.appendChild(bubble);
+        bubble.addEventListener('animationend', () => bubble.remove(), { once: true });
+
+        setTimeout(spawnBubble, Math.random() * 1500 + 300);
+    };
+
+    for (let i = 0; i < 5; i += 1) {
+        setTimeout(spawnBubble, Math.random() * 2000);
+    }
+
+    class Fish {
+        constructor(element, isDynamic = false) {
+            this.element = element;
+            this.fishGraphic = element.querySelector('.aquarium-fish');
+            this.isDynamic = isDynamic;
+            this.baseWidth = parseFloat(element.dataset.width) || 80;
+            this.baseSpeed = parseFloat(element.dataset.baseSpeed) || 1.5;
+
+            this.updateSize();
+            this.x = Math.random() * Math.max(tankWidth - this.width, 1);
+            this.y = Math.random() * Math.max(tankHeight - this.height - 130 * sceneScale, 1) + 30 * sceneScale;
+
+            const angle = Math.random() * Math.PI * 2;
+            const speed = this.baseSpeed * (0.8 + Math.random() * 0.4);
+            this.vx = Math.cos(angle) * speed;
+            this.vy = Math.sin(angle) * speed;
+
+            this.targetVx = this.vx;
+            this.targetVy = this.vy;
+            this.wanderTimer = Math.random() * 120 + 60;
+
+            this.element.style.display = 'block';
+            this.element.style.position = 'absolute';
+            if (isDynamic) {
+                this.element.classList.add('dynamic-fish');
+            }
+
+            this.updateDOM();
+        }
+
+        updateSize() {
+            this.width = this.baseWidth * sceneScale;
+
+            const name = this.element.dataset.name || '';
+            if (name.includes('Tang')) {
+                this.height = this.width * 0.70;
+            } else if (name.includes('Wrasse')) {
+                this.height = this.width * 0.45;
+            } else {
+                this.height = this.width * 0.65;
+            }
+
+            this.element.style.width = `${this.width}px`;
+            this.element.style.height = `${this.height}px`;
+        }
+
+        getBounds() {
+            const boundaryBuffer = Math.max(6, 10 * sceneScale);
+            const floorClearance = Math.max(56, 90 * sceneScale);
+            const surfaceLine = Math.max(16, 20 * sceneScale);
+            return {
+                boundaryBuffer,
+                surfaceLine,
+                sandLine: tankHeight - this.height - floorClearance,
+            };
+        }
+
+        constrainPosition() {
+            const { boundaryBuffer, surfaceLine, sandLine } = this.getBounds();
+            const maxX = Math.max(boundaryBuffer, tankWidth - this.width - boundaryBuffer);
+            const maxY = Math.max(surfaceLine, sandLine);
+
+            if (this.x < boundaryBuffer) {
+                this.x = boundaryBuffer;
+                this.vx = Math.abs(this.vx);
+                this.targetVx = Math.abs(this.targetVx);
+            } else if (this.x > maxX) {
+                this.x = maxX;
+                this.vx = -Math.abs(this.vx);
+                this.targetVx = -Math.abs(this.targetVx);
+            }
+
+            if (this.y < surfaceLine) {
+                this.y = surfaceLine;
+                this.vy = Math.abs(this.vy);
+                this.targetVy = Math.abs(this.targetVy);
+            } else if (this.y > maxY) {
+                this.y = maxY;
+                this.vy = -Math.abs(this.vy);
+                this.targetVy = -Math.abs(this.targetVy);
+            }
+        }
+
+        resize() {
+            this.updateSize();
+            this.constrainPosition();
+            this.updateDOM();
+        }
+
+        wander() {
+            this.wanderTimer -= 1;
+            if (this.wanderTimer <= 0) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = this.baseSpeed * (0.7 + Math.random() * 0.6);
+                this.targetVx = Math.cos(angle) * speed;
+                this.targetVy = Math.sin(angle) * speed;
+                this.wanderTimer = Math.random() * 180 + 80;
+            }
+
+            this.vx += (this.targetVx - this.vx) * 0.03;
+            this.vy += (this.targetVy - this.vy) * 0.03;
+        }
+
+        update() {
+            this.wander();
+            this.x += this.vx;
+            this.y += this.vy;
+            this.constrainPosition();
+            this.updateDOM();
+        }
+
+        updateDOM() {
+            const scaleX = this.vx < 0 ? -1 : 1;
+            let angleDeg = Math.atan2(this.vy, Math.max(Math.abs(this.vx), 0.001)) * (180 / Math.PI);
+            angleDeg = Math.max(-25, Math.min(25, angleDeg));
+
+            this.element.style.transform = `translate3d(${this.x}px, ${this.y}px, 0)`;
+            if (this.fishGraphic) {
+                this.fishGraphic.style.transform = `scaleX(${scaleX}) rotate(${angleDeg}deg)`;
+            }
+        }
+
+        reset() {
+            this.updateSize();
+            this.x = Math.random() * Math.max(tankWidth - this.width, 1);
+            this.y = Math.random() * Math.max(tankHeight - this.height - 130 * sceneScale, 1) + 30 * sceneScale;
+
+            const angle = Math.random() * Math.PI * 2;
+            const speed = this.baseSpeed * (0.8 + Math.random() * 0.4);
+            this.vx = Math.cos(angle) * speed;
+            this.vy = Math.sin(angle) * speed;
+            this.targetVx = this.vx;
+            this.targetVy = this.vy;
+            this.wanderTimer = Math.random() * 120 + 60;
+
+            this.constrainPosition();
+            this.updateDOM();
+        }
+    }
+
+    const fishElements = Array.from(document.querySelectorAll('.aquarium-fish-wrapper'));
+    fishElements.forEach((element) => {
+        fishes.push(new Fish(element));
+    });
+
+    syncSceneMetrics();
+
+    const tick = () => {
+        fishes.forEach((fish) => fish.update());
+        requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    const addFishBtn = document.getElementById('add-fish-btn');
+    if (addFishBtn) {
+        addFishBtn.addEventListener('click', () => {
+            const originalTemplates = Array.from(fishElements);
+            if (originalTemplates.length === 0) return;
+
+            const template = originalTemplates[Math.floor(Math.random() * originalTemplates.length)];
+            const clone = template.cloneNode(true);
+            clone.style.display = 'none';
+            clone.classList.remove('is-tooltip-active');
+            clone.removeAttribute('data-tooltip-bound');
+            organismsContainer.appendChild(clone);
+            bindInteractiveWrapper(clone);
+
+            const newFish = new Fish(clone, true);
+            fishes.push(newFish);
+            newFish.resize();
+        });
+    }
+
+    const resetBtn = document.getElementById('reset-aquarium-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            closeTooltips();
+            document.querySelectorAll('.dynamic-fish').forEach((element) => element.remove());
+
+            for (let i = fishes.length - 1; i >= 0; i -= 1) {
+                if (fishes[i].isDynamic) {
+                    fishes.splice(i, 1);
+                } else {
+                    fishes[i].reset();
+                }
+            }
+        });
+    }
+});
+</script>
+{{ end }}
